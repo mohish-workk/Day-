@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react';
 
-const Polaroid = ({ image, tilt = '0deg', warpY = '0deg', warpX = '0deg', objectPosition, sticker }) => {
+const Polaroid = ({ image, tilt = '0deg', warpY = '0deg', warpX = '0deg', objectPosition, sticker, isFirst, isLast }) => {
     // Randomize sticker position if it exists
-    const stickerPos = React.useMemo(() => ({
-        side: Math.random() > 0.5 ? 'left' : 'right',
-        top: `${Math.floor(Math.random() * 40 + 60)}%`, // Lower half
-        rotate: `${Math.floor(Math.random() * 40 - 20)}deg`
-    }), []);
+    const stickerPos = React.useMemo(() => {
+        const side = isFirst ? 'left' : (isLast ? 'right' : (Math.random() > 0.5 ? 'left' : 'right'));
+        return {
+            side: side,
+            top: `${Math.floor(Math.random() * 30 + 20)}%`, // Upper-middle side
+            rotate: `${Math.floor(Math.random() * 40 - 20)}deg`
+        };
+    }, [isFirst, isLast]);
 
     return (
         <div
@@ -110,7 +113,13 @@ const HangingRow = ({ photos }) => {
 
                     return (
                         <div key={i} style={{ paddingTop: verticalOffset }}>
-                            <Polaroid {...p} warpY={warpY} warpX={warpX} />
+                            <Polaroid
+                                {...p}
+                                warpY={warpY}
+                                warpX={warpX}
+                                isFirst={i === 0}
+                                isLast={i === photos.length - 1}
+                            />
                         </div>
                     );
                 })}
