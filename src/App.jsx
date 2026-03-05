@@ -31,16 +31,16 @@ function App() {
   };
 
   const photos = [
-    { image: img1, tilt: "-2deg", sticker: stickerPizza },
+    { image: img1, tilt: "-2deg", sticker: stickerPizza }, // Row 0 (L) - OK
     { image: img2, tilt: "3deg" },
-    { image: img3, tilt: "-1deg", sticker: stickerBurger },
-    { image: img4, tilt: "4deg" },
-    { image: img5, tilt: "-3deg", sticker: stickerFries },
+    { image: img3, tilt: "-1deg" },
+    { image: img4, tilt: "4deg", sticker: stickerBurger }, // Row 1 (R) - Now on Right Edge
+    { image: img5, tilt: "-3deg", sticker: stickerFries }, // Row 2 (L) - OK
     { image: img6, tilt: "2deg" },
-    { image: img7, tilt: "-2deg", sticker: stickerPav },
-    { image: img8, tilt: "1deg" },
-    { image: img9, tilt: "-3deg", objectPosition: "center 20%", sticker: stickerPizza }, // Adjusting to see face
-    { image: img10, tilt: "2deg", sticker: stickerBurger }
+    { image: img7, tilt: "-2deg" },
+    { image: img8, tilt: "1deg", sticker: stickerPav },    // Row 3 (R) - Now on Right Edge
+    { image: img9, tilt: "-3deg", objectPosition: "center 20%", sticker: stickerPizza }, // Row 4 (L) - OK
+    { image: img10, tilt: "2deg" } // Row 4 (L) - Burger Removed (user: "it's still on last row")
   ];
 
   return (

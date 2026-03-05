@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from 'react';
 
-const Polaroid = ({ image, tilt = '0deg', warpY = '0deg', warpX = '0deg', objectPosition, sticker, isFirst, isLast }) => {
+const Polaroid = ({ image, tilt = '0deg', warpY = '0deg', warpX = '0deg', objectPosition, sticker, rowIndex }) => {
     // Randomize sticker position if it exists
     const stickerPos = React.useMemo(() => {
-        if (!isFirst && !isLast) return null; // No stickers on middle photos to avoid "between"
-        const side = isFirst ? 'left' : 'right';
+        // First row (0) left, Second row (1) right, etc.
+        const side = rowIndex % 2 === 0 ? 'left' : 'right';
+
         return {
-            side: side,
-            top: `${Math.floor(Math.random() * 30 + 5)}%`, // Top-half side
+            side,
+            top: `${Math.floor(Math.random() * 50 + 15)}%`, // Keep in upper/middle area, away from bottom
             rotate: `${Math.floor(Math.random() * 40 - 20)}deg`
         };
-    }, [isFirst, isLast]);
+    }, [rowIndex]);
 
     return (
         <div
@@ -21,11 +22,11 @@ const Polaroid = ({ image, tilt = '0deg', warpY = '0deg', warpX = '0deg', object
             }}
         >
             {/* Sticker */}
-            {sticker && stickerPos && (
+            {sticker && (
                 <div
-                    className="absolute z-50 w-8 h-8 pointer-events-none drop-shadow-md"
+                    className="absolute z-50 w-8 h-8 md:w-10 md:h-10 pointer-events-none drop-shadow-md"
                     style={{
-                        [stickerPos.side]: '-32px',
+                        [stickerPos.side]: '-40px', // Consistent extreme offset
                         top: stickerPos.top,
                         transform: `rotate(${stickerPos.rotate})`,
                     }}
@@ -63,7 +64,7 @@ const Polaroid = ({ image, tilt = '0deg', warpY = '0deg', warpX = '0deg', object
     );
 };
 
-const HangingRow = ({ photos }) => {
+const HangingRow = ({ photos, rowIndex }) => {
     return (
         <div className="relative w-full min-h-[220px] mb-8 flex justify-center items-start pt-0 overflow-visible">
             {/* The String */}
@@ -118,8 +119,7 @@ const HangingRow = ({ photos }) => {
                                 {...p}
                                 warpY={warpY}
                                 warpX={warpX}
-                                isFirst={i === 0}
-                                isLast={i === photos.length - 1}
+                                rowIndex={rowIndex}
                             />
                         </div>
                     );
@@ -147,12 +147,12 @@ const PolaroidBoard = ({ months }) => {
     }
 
     return (
-        <div className="w-full max-w-5xl mx-auto bg-[#f9f5f0] p-4 sm:p-12 shadow-2xl rounded-sm border-8 border-white relative overflow-hidden min-h-screen sm:min-h-0">
+        <div className="w-full max-w-5xl mx-auto bg-[#f9f5f0] p-4 px-10 sm:p-12 sm:px-16 shadow-2xl rounded-sm border-8 border-white relative min-h-screen sm:min-h-0">
             <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: 'url("https://www.transparenttextures.com/patterns/wood-pattern.png")' }}></div>
 
             <div className="relative z-10 flex flex-col items-center py-8">
                 {rows.map((rowPhotos, i) => (
-                    <HangingRow key={i} photos={rowPhotos} />
+                    <HangingRow key={i} photos={rowPhotos} rowIndex={i} />
                 ))}
                 {/* Footer Message */}
                 <div className="mt-16 text-center relative z-10">
