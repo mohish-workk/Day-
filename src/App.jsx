@@ -14,6 +14,12 @@ import img8 from './assets/8.jpeg';
 import img9 from './assets/9.jpeg';
 import img10 from './assets/10.jpeg';
 
+// Import food stickers
+import stickerBurger from './assets/burger.avif';
+import stickerFries from './assets/fries.jpeg';
+import stickerPav from './assets/pav.jpeg';
+import stickerPizza from './assets/pizza.png';
+
 function App() {
   const [stage, setStage] = useState('envelope'); // 'envelope' or 'board'
 
@@ -25,16 +31,16 @@ function App() {
   };
 
   const photos = [
-    { image: img1, tilt: "-2deg" },
+    { image: img1, tilt: "-2deg", sticker: stickerPizza },
     { image: img2, tilt: "3deg" },
-    { image: img3, tilt: "-1deg" },
+    { image: img3, tilt: "-1deg", sticker: stickerBurger },
     { image: img4, tilt: "4deg" },
-    { image: img5, tilt: "-3deg" },
+    { image: img5, tilt: "-3deg", sticker: stickerFries },
     { image: img6, tilt: "2deg" },
-    { image: img7, tilt: "-2deg" },
+    { image: img7, tilt: "-2deg", sticker: stickerPav },
     { image: img8, tilt: "1deg" },
-    { image: img9, tilt: "-3deg", objectPosition: "center 20%" }, // Adjusting to see face
-    { image: img10, tilt: "2deg" }
+    { image: img9, tilt: "-3deg", objectPosition: "center 20%", sticker: stickerPizza }, // Adjusting to see face
+    { image: img10, tilt: "2deg", sticker: stickerBurger }
   ];
 
   return (

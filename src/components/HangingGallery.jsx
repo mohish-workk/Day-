@@ -1,6 +1,13 @@
 import React, { useState, useEffect } from 'react';
 
-const Polaroid = ({ image, tilt = '0deg', warpY = '0deg', warpX = '0deg', objectPosition }) => {
+const Polaroid = ({ image, tilt = '0deg', warpY = '0deg', warpX = '0deg', objectPosition, sticker }) => {
+    // Randomize sticker position if it exists
+    const stickerPos = React.useMemo(() => ({
+        side: Math.random() > 0.5 ? 'left' : 'right',
+        top: `${Math.floor(Math.random() * 40 + 60)}%`, // Lower half
+        rotate: `${Math.floor(Math.random() * 40 - 20)}deg`
+    }), []);
+
     return (
         <div
             className="relative flex flex-col items-center group transition-all duration-300 mx-1 sm:mx-4"
@@ -9,9 +16,23 @@ const Polaroid = ({ image, tilt = '0deg', warpY = '0deg', warpX = '0deg', object
                 perspective: '1000px'
             }}
         >
+            {/* Sticker */}
+            {sticker && (
+                <div
+                    className="absolute z-50 w-8 h-8 pointer-events-none drop-shadow-md"
+                    style={{
+                        [stickerPos.side]: '-10px',
+                        top: stickerPos.top,
+                        transform: `rotate(${stickerPos.rotate})`,
+                    }}
+                >
+                    <img src={sticker} alt="sticker" className="w-full h-full object-contain" />
+                </div>
+            )}
+
             {/* Wooden Clip */}
             <div className="absolute -top-7 w-2.5 h-8 bg-[#d2b48c] shadow-md rounded-sm z-30 border-t border-l border-[#8b4513]/30">
-                <div className="absolute top-[18px] left-0 w-full h-[1px] bg-[#8b4513]/30"></div>
+                <div className="absolute top-[18px] left-0 w-full h-px bg-[#8b4513]/30"></div>
             </div>
 
             {/* Polaroid Frame */}
