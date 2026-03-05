@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const Polaroid = ({ image, tilt = '0deg', warpY = '0deg', warpX = '0deg' }) => {
+const Polaroid = ({ image, tilt = '0deg', warpY = '0deg', warpX = '0deg', objectPosition }) => {
     return (
         <div
             className="relative flex flex-col items-center group transition-all duration-300 mx-1 sm:mx-4"
@@ -24,7 +24,12 @@ const Polaroid = ({ image, tilt = '0deg', warpY = '0deg', warpX = '0deg' }) => {
                 }}
             >
                 <div className="aspect-square bg-slate-100 overflow-hidden relative">
-                    <img src={image} alt="Memory" className="w-full h-full object-cover filter contrast-[1.1] brightness-[1.05]" />
+                    <img
+                        src={image}
+                        alt="Memory"
+                        className="w-full h-full object-cover filter contrast-[1.1] brightness-[1.05]"
+                        style={{ objectPosition: objectPosition || 'center' }}
+                    />
                     <div className="absolute inset-0 bg-gradient-to-tr from-black/10 via-white/5 to-white/20 pointer-events-none opacity-40"></div>
                 </div>
                 <div className="absolute -bottom-1 left-2 right-2 h-4 bg-black/5 blur-md -z-10 rounded-[50%]"></div>
