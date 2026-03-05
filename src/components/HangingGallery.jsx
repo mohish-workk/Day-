@@ -21,7 +21,7 @@ const Polaroid = ({ image, tilt = '0deg', warpY = '0deg', warpX = '0deg', object
             }}
         >
             {/* Sticker */}
-            {sticker && (
+            {sticker && stickerPos && (
                 <div
                     className="absolute z-50 w-8 h-8 pointer-events-none drop-shadow-md"
                     style={{
