@@ -135,4 +135,3 @@ const PolaroidBoard = ({ months }) => {
 };
 
 export default PolaroidBoard;
-```
