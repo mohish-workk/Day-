@@ -123,15 +123,16 @@ const PolaroidBoard = ({ months }) => {
                 {rows.map((rowPhotos, i) => (
                     <HangingRow key={i} photos={rowPhotos} />
                 ))}
-            </div>
-
-            <div className="mt-8 mb-12 text-center relative z-10">
-                <p className="font-script text-2xl md:text-5xl text-slate-800 drop-shadow-sm px-4">
-                    Every day with you is the best day of my life
-                </p>
+                {/* Footer Message */}
+                <div className="mt-16 text-center relative z-10">
+                    <p className="font-script text-3xl md:text-5xl text-slate-800 drop-shadow-sm px-4">
+                        Thank you for existing Doc
+                    </p>
+                </div>
             </div>
         </div>
     );
 };
 
 export default PolaroidBoard;
+```
