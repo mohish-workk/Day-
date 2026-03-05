@@ -21,7 +21,7 @@ const Polaroid = ({ image, tilt = '0deg', warpY = '0deg', warpX = '0deg', object
                 <div
                     className="absolute z-50 w-8 h-8 pointer-events-none drop-shadow-md"
                     style={{
-                        [stickerPos.side]: '-10px',
+                        [stickerPos.side]: '-32px',
                         top: stickerPos.top,
                         transform: `rotate(${stickerPos.rotate})`,
                     }}
