@@ -82,7 +82,7 @@ body {
 }
 
 .envelope-container.open .letter-card {
-  transform: translateY(-55%);
+  transform: translateY(-95%);
 }
 
 /* Envelope Flap */
