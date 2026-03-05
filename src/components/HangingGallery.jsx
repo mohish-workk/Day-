@@ -147,7 +147,7 @@ const PolaroidBoard = ({ months }) => {
                 {/* Footer Message */}
                 <div className="mt-16 text-center relative z-10">
                     <p className="font-script text-3xl md:text-5xl text-slate-800 drop-shadow-sm px-4">
-                        Thank you for existing Doc
+                        Thank You For Existing Doc 🧿💗
                     </p>
                 </div>
             </div>
