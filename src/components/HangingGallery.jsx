@@ -1,17 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const Polaroid = ({ image, tilt = '0deg', warpY = '0deg', warpX = '0deg', objectPosition, sticker, rowIndex }) => {
-    // Randomize sticker position if it exists
-    const stickerPos = React.useMemo(() => {
-        // First row (0) left, Second row (1) right, etc.
-        const side = rowIndex % 2 === 0 ? 'left' : 'right';
-
-        return {
-            side,
-            top: `${Math.floor(Math.random() * 50 + 15)}%`, // Keep in upper/middle area, away from bottom
-            rotate: `${Math.floor(Math.random() * 40 - 20)}deg`
-        };
-    }, [rowIndex]);
+const Polaroid = ({ image, tilt = '0deg', warpY = '0deg', warpX = '0deg', objectPosition, rowIndex }) => {
 
     return (
         <div
@@ -21,19 +10,6 @@ const Polaroid = ({ image, tilt = '0deg', warpY = '0deg', warpX = '0deg', object
                 perspective: '1000px'
             }}
         >
-            {/* Sticker */}
-            {sticker && (
-                <div
-                    className="absolute z-50 w-8 h-8 md:w-10 md:h-10 pointer-events-none drop-shadow-md"
-                    style={{
-                        [stickerPos.side]: '-40px', // Consistent extreme offset
-                        top: stickerPos.top,
-                        transform: `rotate(${stickerPos.rotate})`,
-                    }}
-                >
-                    <img src={sticker} alt="sticker" className="w-full h-full object-contain" />
-                </div>
-            )}
 
             {/* Wooden Clip */}
             <div className="absolute -top-7 w-2.5 h-8 bg-[#d2b48c] shadow-md rounded-sm z-30 border-t border-l border-[#8b4513]/30">
@@ -151,13 +127,21 @@ const PolaroidBoard = ({ months }) => {
             <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: 'url("https://www.transparenttextures.com/patterns/wood-pattern.png")' }}></div>
 
             <div className="relative z-10 flex flex-col items-center py-8">
+                {/* Header Title */}
+                <div className="mb-8 text-center">
+                    <h1 className="font-script text-5xl md:text-7xl text-slate-800 drop-shadow-sm tracking-wide">
+                        Dyne
+                    </h1>
+                    <div className="w-16 h-1 bg-primary/20 mx-auto mt-2 rounded-full"></div>
+                </div>
+
                 {rows.map((rowPhotos, i) => (
                     <HangingRow key={i} photos={rowPhotos} rowIndex={i} />
                 ))}
                 {/* Footer Message */}
                 <div className="mt-16 text-center relative z-10">
                     <p className="font-script text-3xl md:text-5xl text-slate-800 drop-shadow-sm px-4">
-                        Thank You For Existing Doc 🧿💗
+                        You must be soo tired hearing how cool your brother is 😮💨
                     </p>
                 </div>
             </div>

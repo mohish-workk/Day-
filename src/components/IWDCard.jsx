@@ -32,7 +32,7 @@ const IWDCard = ({ onOpen }) => {
           <h3 className="letter-subtitle">Women's Day</h3>
           <div className="w-1/4 h-0.5 bg-primary/30 my-2 rounded-full"></div>
           <p className="letter-text">
-            "To my absolute best friend. Thank you for always sticking by my side, through all the eras and every chaotic moment. You inspire me every single day."
+            Happy Women's Day to my favorite personal ATM! Yes, you are incredibly annoying 90% of the time, but the expensive shirts and the iPhone definitely make up for it. Seriously though, thank you for always spoiling me, putting up with me, and being the best elder sister. I'd be broke without you.
           </p>
 
           <div className="absolute top-2 right-2 text-primary opacity-50 w-[8cqw]">

@@ -12,13 +12,6 @@ import img6 from './assets/6.jpeg';
 import img7 from './assets/7.jpeg';
 import img8 from './assets/8.jpeg';
 import img9 from './assets/9.jpeg';
-import img10 from './assets/10.jpeg';
-
-// Import food stickers
-import stickerBurger from './assets/burger.avif';
-import stickerFries from './assets/fries.jpeg';
-import stickerPav from './assets/pav.jpeg';
-import stickerPizza from './assets/pizza.png';
 
 function App() {
   const [stage, setStage] = useState('envelope'); // 'envelope' or 'board'
@@ -31,16 +24,15 @@ function App() {
   };
 
   const photos = [
-    { image: img1, tilt: "-2deg", sticker: stickerPizza }, // Row 0 (L) - OK
+    { image: img1, tilt: "-2deg" }, // Row 0 (L) - OK
     { image: img2, tilt: "3deg" },
     { image: img3, tilt: "-1deg" },
-    { image: img4, tilt: "4deg", sticker: stickerBurger }, // Row 1 (R) - Now on Right Edge
-    { image: img5, tilt: "-3deg", sticker: stickerFries }, // Row 2 (L) - OK
+    { image: img4, tilt: "4deg" }, // Row 1 (R) - Now on Right Edge
+    { image: img5, tilt: "-3deg" }, // Row 2 (L) - OK
     { image: img6, tilt: "2deg" },
     { image: img7, tilt: "-2deg" },
-    { image: img8, tilt: "1deg", sticker: stickerPav },    // Row 3 (R) - Now on Right Edge
-    { image: img9, tilt: "-3deg", objectPosition: "center 20%", sticker: stickerPizza }, // Row 4 (L) - OK
-    { image: img10, tilt: "2deg" } // Row 4 (L) - Burger Removed (user: "it's still on last row")
+    { image: img8, tilt: "1deg" },    // Row 3 (R) - Now on Right Edge
+    { image: img9, tilt: "-3deg", objectPosition: "center 20%" } // Row 4 (L) - OK
   ];
 
   return (
