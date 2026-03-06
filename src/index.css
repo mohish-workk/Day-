@@ -43,10 +43,10 @@ body {
 .envelope-container {
   position: relative;
   width: 90vw;
-  max-width: 450px;
-  aspect-ratio: 3 / 2;
+  max-width: 500px;
+  aspect-ratio: 1 / 1;
   cursor: pointer;
-  margin: 80px auto;
+  margin: 100px auto;
   container-type: inline-size;
   perspective: 1000px;
   transition: margin-top 0.6s cubic-bezier(0.4, 0, 0.2, 1);
@@ -79,15 +79,15 @@ body {
   align-items: center;
   justify-content: center;
   text-align: center;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .envelope-container.open .letter-card {
-  transform: translateY(-85%);
+  transform: translateY(-95%);
 }
 
 .envelope-container.open {
-  margin-top: 140px;
+  margin-top: 200px;
 }
 
 /* Envelope Flap */
