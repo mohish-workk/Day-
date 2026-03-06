@@ -18,7 +18,7 @@ const IWDCard = ({ onOpen }) => {
   };
 
   return (
-    <section className="flex flex-col items-center justify-center min-h-[500px] w-full px-4 overflow-visible">
+    <section className="flex flex-col items-center justify-center min-h-[600px] w-full px-4 overflow-visible py-12">
       <div
         className={`envelope-container ${isOpen ? 'open' : ''}`}
         onClick={handleToggle}
